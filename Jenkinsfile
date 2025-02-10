@@ -36,7 +36,7 @@ pipeline{
 				timeout(time:30,unit:"MINUTES"){
 					script{
 						print("代码扫瞄")
-						tools.PrintMes("this is my lib")
+						tools.PrintMes("this is my lib hahaha ")
 					}
 				}
 			}
