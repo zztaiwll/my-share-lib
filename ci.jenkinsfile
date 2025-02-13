@@ -1,52 +1,50 @@
 #!groovy
+@Library('my-share-lib')
 String buildshell= "${env.buildshell}"
+def build=new org.foo.build()
 pipeline{
     agent {
         node {
             label "built-in"
         }
     }
-    tools {
-        maven "M2"
-    }
     stages{
         stage("build"){
             steps{
                 script {
-                    mvnHome=tool "M2"
-                    sh "${mvnHome}/bin/mvn ${buildshell}"
+                    build.Build(buildType,buildshell)
                 }
             }
 
         }
-        stage("antbuild"){
-            steps{
-                script{
-                    try{
-                        antHome=tool "ANT"
-                        sh "${antHome}/bin/ant ${buildshell}"
-                    }catch(e){
-                        println(e)
-                    }
-
-                }
-            }
-        }
-        stage("gradlebuild"){
-            steps{
-             script {
-                gradleHome=tool "GRADLE"
-                sh "${gradleHome}/bin/gradle ${buildshell}"
-             }
-            }
-        }
-        stage("nodeBuild"){
-            steps{
-                script{
-                    nodeHome=tool "NODE"
-                    sh "${nodeHome}/bin/npm ${buildshell}"
-                }
-            }
-        }
+//         stage("antbuild"){
+//             steps{
+//                 script{
+//                     try{
+//                         antHome=tool "ANT"
+//                         sh "${antHome}/bin/ant ${buildshell}"
+//                     }catch(e){
+//                         println(e)
+//                     }
+//
+//                 }
+//             }
+//         }
+//         stage("gradlebuild"){
+//             steps{
+//              script {
+//                 gradleHome=tool "GRADLE"
+//                 sh "${gradleHome}/bin/gradle ${buildshell}"
+//              }
+//             }
+//         }
+//         stage("nodeBuild"){
+//             steps{
+//                 script{
+//                     nodeHome=tool "NODE"
+//                     sh "${nodeHome}/bin/npm ${buildshell}"
+//                 }
+//             }
+//         }
     }
 }
