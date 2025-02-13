@@ -44,7 +44,7 @@ pipeline{
             steps{
                 script{
                     nodeHome=tool "NODE"
-                    sh "${nodeHome/bin/node ${buildshell}"
+                    sh "${nodeHome/bin/npm ${buildshell}"
                 }
             }
         }
