@@ -1,7 +1,7 @@
 package org.foo
 
 def Build(buildType,buildShell){
-    def buildTools=["mvn":"M2","ant":"ANT","gradle":"GRADLE"]
+    def buildTools=["mvn":"M2","ant":"ANT","gradle":"GRADLE","npm":"NODE"]
     println("当前选择的构建类型是${buildType}")
     buildHome=tool buildTools[buildType]
     if("${buildType}"=="npm"){
