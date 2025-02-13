@@ -27,5 +27,13 @@ pipeline{
                 }
             }
         }
+        stage("gradlebuild"){
+            steps{
+             script {
+                gradleHome=tool "GRADLE"
+                sh "${gradleHome}/bin/gradle ${buildshell}"
+             }
+            }
+        }
     }
 }
