@@ -1,7 +1,7 @@
 #!groovy
 @Library('my-share-lib')
 String buildshell= "${env.buildshell}"
-String buildType="{env.buildType}"
+String buildType="${env.buildType}"
 def build=new org.foo.build()
 pipeline{
     agent {
