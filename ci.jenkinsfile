@@ -1,5 +1,5 @@
 #!groovy
-@Library('my-share-lib')
+@Library('my-share-lib')_
 String buildshell= "${env.buildshell}"
 String buildType="${env.buildType}"
 def build=new org.foo.build()
