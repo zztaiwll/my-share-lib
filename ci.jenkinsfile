@@ -5,13 +5,15 @@ pipeline{
             label "built-in"
         }
     }
+    tools {
+        maven "M2"
+    }
     stages{
         stage("build"){
             steps{
                 script {
                     mvnHome=tool "M2"
-                    sh "${mvnHome/bin/mvn -v}"
-                        println("1234")
+                    sh "${mvnHome}/bin/mvn -v"
                 }
             }
 
