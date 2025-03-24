@@ -1,8 +1,9 @@
 #!groovy
 @Library('my-share-lib')_
-String buildshell= "${env.buildshell}"
-String buildType="${env.buildType}"
-def build=new org.foo.build()
+// String buildshell= "${env.buildshell}"
+// String buildType="${env.buildType}"
+// def build=new org.foo.build()
+def deploy=new org.foo.deploy
 pipeline{
     agent {
         node {
@@ -13,7 +14,8 @@ pipeline{
         stage("build"){
             steps{
                 script {
-                    build.Build(buildType,buildshell)
+//                     build.Build(buildType,buildshell)
+                        deploy.ansibleDeploy("server1","-m ping")
                 }
             }
 
