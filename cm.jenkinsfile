@@ -1,0 +1,16 @@
+#!groovy
+@Library('my-share-lib')_
+def deploy=new org.foo.deploy
+pipeline{
+    agent any
+    stages{
+        stage("build"){
+            steps{
+                script {
+                        deploy.ansibleDeploy("server1","-m ping")
+                }
+            }
+
+        }
+    }
+}
